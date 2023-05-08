@@ -1,5 +1,5 @@
 let headers = new Headers({"Content-Type": "application/json"});
-let puerto = 4000;
+let puerto = 4001;
 
 const postUser = async(arg)=>{
     arg.id = (arg.id) ? arg.id : Date.now();
@@ -17,7 +17,7 @@ const updateUser = async(arg)=>{
     body: JSON.stringify(arg),
     headers: headers
 };
-return await (await fetch(`http://localhost:${puerto}/usuarios/{aqui va l consumo desde pantalla}}`,config) ).json();
+return await (await fetch(`http://localhost:${puerto}/usuarios/${arg.id}}`,config) ).json();
 }
 const getUserAll = async()=>{
     let config = {
@@ -26,7 +26,7 @@ const getUserAll = async()=>{
     };
     return await ( await fetch(`http://localhost:${puerto}/usuarios`, config) ).json();
 }
-const delteUser = async(arg)=>{
+const deleteUser = async(arg)=>{
     let config = {
         method: "DELETE", 
         headers: headers, 
@@ -38,6 +38,6 @@ const delteUser = async(arg)=>{
 export default{
     postUser,
     getUserAll,
-    delteUser,
+    deleteUser,
     updateUser
 }
